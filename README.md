@@ -71,20 +71,29 @@ The architecture involves the following components working together:
 
 ![Architecture Diagram](diagram.png)
 
-# Contributing
+## Contributing
 
 Your contributions are welcome! If you have ideas for improvements or new features:
 
 1. Fork the repository.
-2. Create a new branch (`git checkout -b feature-branch`).
-3. Commit your changes (`git commit -am 'Add some feature'`).
-4. Push to the branch (`git push origin feature-branch`).
+2. Create a new branch:
+   ```bash
+   git checkout -b feature-branch
+   ```
+3. Commit your changes:
+   ```bash
+   git commit -am 'Add some feature'
+   ```
+4. Push to the branch:
+   ```bash
+   git push origin feature-branch
+   ```
 5. Submit a pull request.
 
 ## Contact Information
 
 For more information, please reach out to me at:
 
-- **Email**: jayakuma006@mymail.sim.edu.sg
+- **Email**: [jayakuma006@mymail.sim.edu.sg](mailto:jayakuma006@mymail.sim.edu.sg)
 - **LinkedIn**: [Akilesh Jayakumar on LinkedIn](https://www.linkedin.com/in/akileshjayakumar/)
 - **GitHub**: [Akilesh Jayakumar on GitHub](https://github.com/akileshjayakumar)
