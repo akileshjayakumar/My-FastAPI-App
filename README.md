@@ -1,4 +1,4 @@
-# Simple FastAPI, Celery, RabbitMQ, and Flower App
+# FastAPI App with Celery, RabbitMQ, and Flower UI
 
 ## Introduction
 
