@@ -16,18 +16,18 @@ simple_app/
 └── Dockerfile
 ```
 
-## Components
+## Tech Stack
 
-- **FastAPI**: A modern, fast web framework for building APIs with Python 3.6+.
-- **Celery**: An asynchronous task queue/job queue based on distributed message passing.
-- **RabbitMQ**: A message broker that allows communication between distributed systems.
-- **Flower**: A real-time web-based monitoring tool for Celery.
+- **[FastAPI](https://fastapi.tiangolo.com/)**: A modern, fast web framework for building APIs with Python 3.6+.
+- **[Celery](https://docs.celeryq.dev/en/stable/)**: An asynchronous task queue/job queue based on distributed message passing.
+- **[RabbitMQ](https://www.rabbitmq.com/documentation.html)**: A message broker that allows communication between distributed systems.
+- **[Flower](https://flower.readthedocs.io/en/latest/)**: A real-time web-based monitoring tool for Celery.
 
-## Installation
+## Setup
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/simple-app.git
+   git clone https://github.com/akileshjayakumar/simple-app.git
    cd simple-app
    ```
 
@@ -52,46 +52,7 @@ simple_app/
 4. **Access the Flower UI**:
    - Open your browser and navigate to `http://localhost:5555` to see the Flower UI.
 
-## File Descriptions
-
-- `app/main.py`: Contains the FastAPI application and endpoints.
-- `app/tasks.py`: Defines the Celery tasks.
-- `Dockerfile`: Docker configuration for building the FastAPI app image.
-- `docker-compose.yml`: Docker Compose configuration for setting up FastAPI, Celery, RabbitMQ, and Flower.
-
-## Architecture
-
-The architecture involves the following components working together:
-
-- **FastAPI** handles incoming requests and triggers tasks.
-- **Celery** processes tasks asynchronously using RabbitMQ as a message broker.
-- **Flower** monitors the status of tasks and workers.
 
 ## Architecture Diagram
 
 ![Architecture Diagram](diagram.png)
-
-## Contributing
-
-Your contributions are welcome! If you have ideas for improvements or new features:
-
-1. **Fork the Repository**
-2. **Create a Branch:**
-   ```bash
-   git checkout -b feature-branch
-   ```
-3. **Commit Changes:**
-   ```bash
-   git commit -am 'Add new feature: description'
-   ```
-4. **Push to Branch:**
-   ```bash
-   git push origin feature-branch
-   ```
-5. **Submit a Pull Request**
-
-## Contact
-
-- **Email:** [jayakuma006@mymail.sim.edu.sg](mailto:jayakuma006@mymail.sim.edu.sg)
-- **LinkedIn:** [Akilesh Jayakumar on LinkedIn](https://www.linkedin.com/in/akileshjayakumar/)
-- **GitHub:** [Akilesh Jayakumar on GitHub](https://github.com/akileshjayakumar)
