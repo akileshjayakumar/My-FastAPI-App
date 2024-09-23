@@ -1,4 +1,4 @@
-from fastapi import FastAPI, BackgroundTasks
+from fastapi import FastAPI, HTTPException
 from celery.result import AsyncResult
 from .tasks import celery_app, add, multiply
 
@@ -6,33 +6,43 @@ app = FastAPI()
 
 
 @app.post("/add/{a}/{b}")
-def add_numbers(a: int, b: int, background_tasks: BackgroundTasks):
-    task = add.apply_async(args=[a, b])
-    background_tasks.add_task(check_task_status, task.id)
-    return {"task_id": task.id}
+def add_numbers(a: int, b: int):
+    """
+    Endpoint to add two numbers asynchronously using Celery.
+    """
+    try:
+        task = add.apply_async(args=[a, b])
+        return {"task_id": task.id}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 @app.post("/multiply/{a}/{b}")
-def add_numbers(a: int, b: int, background_tasks: BackgroundTasks):
-    task = multiply.apply_async(args=[a, b])
-    background_tasks.add_task(check_task_status, task.id)
-    return {"task_id": task.id}
+def multiply_numbers(a: int, b: int):
+    """
+    Endpoint to multiply two numbers asynchronously using Celery.
+    """
+    try:
+        task = multiply.apply_async(args=[a, b])
+        return {"task_id": task.id}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 @app.get("/result/{task_id}")
 def get_result(task_id: str):
-    task_result = AsyncResult(task_id, app=celery_app)
-    if task_result.state == 'PENDING':
-        return {"status": "PENDING"}
-    elif task_result.state == 'SUCCESS':
-        return {"status": "SUCCESS", "result": task_result.result}
-    else:
-        return {"status": task_result.state}
-
-
-def check_task_status(task_id):
-    result = AsyncResult(task_id, app=celery_app)
-    if result.state == 'SUCCESS':
-        print(f"Task {task_id} completed with result: {result.result}")
-    else:
-        print(f"Task {task_id} status: {result.state}")
+    """
+    Endpoint to retrieve the result of a Celery task using its task ID.
+    """
+    try:
+        task_result = AsyncResult(task_id, app=celery_app)
+        if task_result.state == 'PENDING':
+            return {"status": "PENDING"}
+        elif task_result.state == 'SUCCESS':
+            return {"status": "SUCCESS", "result": task_result.result}
+        elif task_result.state == 'FAILURE':
+            return {"status": "FAILURE", "error": str(task_result.result)}
+        else:
+            return {"status": task_result.state}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
