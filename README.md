@@ -7,7 +7,7 @@ This project demonstrates a simple integration of FastAPI, Celery, RabbitMQ, and
 ## Project Structure
 
 ```
-simple_app/
+app/
 ├── app/
 │   ├── main.py
 │   ├── tasks.py
