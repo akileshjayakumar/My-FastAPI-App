@@ -1,67 +1,68 @@
-# FastAPI App with Celery, RabbitMQ, and Flower UI
+# FastAPI App with Celery, RabbitMQ, Flower, and Docker
 
 ## Introduction
 
-This project demonstrates the integration of FastAPI, Celery, RabbitMQ, and Flower. It highlights how these tools can work together to build a backend architecture capable of handling asynchronous task processing.
+This project showcases how to integrate [FastAPI](https://fastapi.tiangolo.com/), [Celery](https://docs.celeryq.dev/en/stable/), [RabbitMQ](https://www.rabbitmq.com/documentation.html), [Flower](https://flower.readthedocs.io/en/latest/), and [Docker](https://www.docker.com/) to build a backend capable of handling asynchronous tasks.
+
+## Tech Stack
+
+- **[FastAPI](https://fastapi.tiangolo.com/)**
+- **[Celery](https://docs.celeryq.dev/en/stable/)**
+- **[RabbitMQ](https://www.rabbitmq.com/documentation.html)**
+- **[Flower](https://flower.readthedocs.io/en/latest/)**
+- **[Docker](https://www.docker.com/)**
 
 ## Project Structure
 
 ```
-app/
+my-fastapi-app/
 ├── app/
+│   ├── __init__.py
 │   ├── main.py
-│   ├── tasks.py
-│   └── __init__.py
+│   └── tasks.py
 ├── docker-compose.yml
-└── Dockerfile
+├── Dockerfile
+├── requirements.txt
+├── README.md
+└── diagram.png
 ```
-
-## Tech Stack
-
-- **[FastAPI](https://fastapi.tiangolo.com/)**: A modern, fast web framework for building APIs with Python 3.6+.
-- **[Celery](https://docs.celeryq.dev/en/stable/)**: An asynchronous task queue/job queue based on distributed message passing.
-- **[RabbitMQ](https://www.rabbitmq.com/documentation.html)**: A message broker that facilitates communication between distributed systems.
-- **[Flower](https://flower.readthedocs.io/en/latest/)**: A real-time web-based monitoring tool for Celery tasks.
 
 ## Setup
 
-### 1. Clone the repository
-   - First, clone the repository from GitHub:
-     ```bash
-     git clone https://github.com/akileshjayakumar/my-fastapi-app
-     ```
-   - Navigate into the project directory:
-     ```bash
-     cd my-fastapi-app
-     ```
+1. **Clone the Repository**
 
-### 2. Build and start the containers
-   - Run the following command to build and start the Docker containers:
-     ```bash
-     docker compose up --build
-     ```
+   ```bash
+   git clone https://github.com/akileshjayakumar/my-fastapi-app
+   cd my-fastapi-app
+   ```
+
+2. **Build and Start Containers**
+
+   ```bash
+   docker compose up --build
+   ```
 
 ## Usage
 
-### 1. Access the FastAPI app
-   - Open your browser and navigate to `http://localhost:8000/docs` to explore the interactive FastAPI API documentation.
+1. **Access FastAPI Documentation**
 
-### 2. Submit a task
-   - Use the `/add/{a}/{b}` endpoint to submit an asynchronous task.
-   - Example: 
-     ```http
-     POST http://localhost:8000/add/3/4
-     ```
+   Open [http://localhost:8000/docs](http://localhost:8000/docs) in your browser to explore the interactive API docs.
 
-### 3. Check task status
-   - Use the `/result/{task_id}` endpoint to check the status and result of a submitted task.
-   - Example: 
-     ```http
-     GET http://localhost:8000/result/{task_id}
-     ```
+2. **Submit a Task**
 
-### 4. Access the Flower UI
-   - Open your browser and navigate to `http://localhost:5555` to monitor Celery tasks via the Flower UI.
+   - **Via Browser or Postman**:
+     - **Endpoint**: `POST http://localhost:8000/add/{a}/{b}`
+     - **Example**: `POST http://localhost:8000/add/3/4`
+
+3. **Check Task Status**
+
+   - **Via Browser or Postman**:
+     - **Endpoint**: `GET http://localhost:8000/result/{task_id}`
+     - **Example**: `GET http://localhost:8000/result/<task_id>`
+
+4. **Monitor Tasks with Flower UI**
+
+   Open [http://localhost:5555](http://localhost:5555) in your browser to view real-time monitoring of Celery tasks.
 
 ## Architecture Diagram
 
