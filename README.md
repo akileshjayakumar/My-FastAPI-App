@@ -1,9 +1,5 @@
 # FastAPI App with Celery, RabbitMQ, Flower, and Docker
 
-## Introduction
-
-This project showcases how to integrate [FastAPI](https://fastapi.tiangolo.com/), [Celery](https://docs.celeryq.dev/en/stable/), [RabbitMQ](https://www.rabbitmq.com/documentation.html), [Flower](https://flower.readthedocs.io/en/latest/), and [Docker](https://www.docker.com/) to build a backend capable of handling asynchronous tasks.
-
 ## Tech Stack
 
 - **[FastAPI](https://fastapi.tiangolo.com/)**
